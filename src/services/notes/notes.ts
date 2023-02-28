@@ -1,6 +1,7 @@
-import { Schema, model } from "mongoose";
+import { Schema, model,Types } from "mongoose";
 
 interface INote {
+  _id: Types.ObjectId,
   note: String;
 }
 
