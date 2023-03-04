@@ -56,4 +56,4 @@ sen.act(
 );
 */
 
-module.exports = plugin;
+export {plugin as emailPlugin};
