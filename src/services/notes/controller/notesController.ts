@@ -27,12 +27,12 @@ sen.add(
     args: any,
     done: (arg0: Error | null, arg1: Object | null) => void
   ) => {
-    let notes = await Note.find();
-    console.log(notes);
-    if (notes) {
+    try {
+      let notes = await Note.find();
       done(null, notes);
+    } catch (e: any) {
+      done(Error(e), null);
     }
-    done(Error("An error occured"), null);
   }
 );
 
@@ -55,16 +55,21 @@ sen.add(
   }
 );
 
-sen.act(
-  { area: "note", action: "create", note: { note: "I am the one" } },
-  function (err, result) {
-    if (err) {
-      return console.error(err);
-    }
-    console.log(result);
+// sen.act(
+//   { area: "note", action: "create", note: { note: "I am the one" } },
+//   function (err, result) {
+//     if (err) {
+//       return console.error(err);
+//     }
+//     console.log(result);
+//   }
+// );
+
+sen.act({ area: "note", action: "fetch" }, function (err, result) {
+  if (err) {
+    return console.error(err);
   }
-);
-
-
+  console.log(result);
+});
 
 //export { plugin as notesPlugin };
