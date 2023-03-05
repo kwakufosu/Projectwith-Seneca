@@ -41,15 +41,19 @@ let plugin = function (this: any, options: any) {
   );
 };
 
-// sen.act(
-//   { area: "note", action: "create", note: { note: "I am the one" } },
-//   function (err, result) {
-//     if (err) {
-//       return console.error(err);
-//     }
-//     console.log(result);
-//   }
-// );
+export { plugin as notesPlugin };
+
+/*
+====This code was just to test the microservice before structuring as a plugin======
+sen.act(
+  { area: "note", action: "create", note: { note: "I am the one" } },
+  function (err, result) {
+    if (err) {
+      return console.error(err);
+    }
+    console.log(result);
+  }
+);
 
 sen.act({ area: "note", action: "fetch" }, function (err, result) {
   if (err) {
@@ -57,5 +61,4 @@ sen.act({ area: "note", action: "fetch" }, function (err, result) {
   }
   console.log(result);
 });
-
-export { plugin as notesPlugin };
+*/
