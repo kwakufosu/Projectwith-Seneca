@@ -11,7 +11,7 @@ interface argsTemplate {
   message: string;
 }
 
-let plugin = function (this: any, options: any) {
+let emailPlugin  = function (this: any, options: any) {
   let sen = this;
   sen.add(
     { area: "email", action: "send_email" },
@@ -40,7 +40,31 @@ let plugin = function (this: any, options: any) {
         });
     }
   );
+
+  this.add("init:emailPlugin ", function(msg:any, respond: any){
+    sen.act('role:web',{ use: {
+    prefix: '/email',
+    pin: {area:'email',action:'*'},
+    map: {
+      fetch: {GET:true},
+      edit: {GET:false,POST:true},
+    }
+    }}, respond)
+    });
 };
+
+/*
+sen.ready(function(err){
+  sen.act('role:web',{use:{
+  prefix: '/email',
+  pin: {area:'email',action:'*'},
+  map:{
+  fetch: {GET:true},
+  edit: {GET:false,POST:true},
+ 
+  }
+  }});
+*/
 
 /*
 // Testing to see if it works.It will be moved from here later on
@@ -56,4 +80,4 @@ sen.act(
 );
 */
 
-export {plugin as emailPlugin};
+export {emailPlugin }
