@@ -42,7 +42,7 @@ let emailPlugin  = function (this: any, options: any) {
   );
 
   this.add("init:emailPlugin ", function(msg:any, respond: any){
-    sen.act('role:web',{ use: {
+    sen.act('role:web',{ routes: {
     prefix: '/email',
     pin: {area:'email',action:'*'},
     map: {

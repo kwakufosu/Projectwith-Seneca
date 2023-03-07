@@ -4,7 +4,7 @@ require("../db/db");
 
 const sen = seneca();
 
-let notesPlugin= function (this: any, options: any) {
+let notesPlugin = function (this: any, options: any) {
   let sen = this;
   sen.add(
     { area: "note", action: "fetch" },
@@ -39,16 +39,17 @@ let notesPlugin= function (this: any, options: any) {
       }
     }
   );
+
   this.add("init:notesPlugin", function (msg: any, respond: any) {
     sen.act(
       "role:web",
       {
-        use: {
-          prefix: "/note ",
-          pin: {area:'note',action:'*'},
+        routes: {
+          prefix: "/note",
+          pin: "area:note, action:*",
           map: {
             fetch: { GET: true },
-            edit: { GET: false, POST: true },
+            create: { GET: false, POST: true },
           },
         },
       },
@@ -57,7 +58,7 @@ let notesPlugin= function (this: any, options: any) {
   });
 };
 
-export {  notesPlugin };
+export { notesPlugin };
 
 /*
 ====This code was just to test the microservice before structuring as a plugin======
