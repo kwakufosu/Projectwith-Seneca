@@ -27,11 +27,8 @@ let notesPlugin = function (this: any, options: any) {
       args: any,
       done: (arg0: Error | null, arg1: Object | null) => void
     ) => {
-      let note = new Note({
-        ...args.note,
-      });
-
       try {
+        let note = new Note({ ...args.args.body });
         await note.save();
         done(null, note);
       } catch (e: any) {

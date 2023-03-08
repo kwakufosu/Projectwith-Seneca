@@ -13,7 +13,7 @@ app.use(express_1.default.json());
 let senecaWebConfig = {
     context: app,
     adapter: require("seneca-web-adapter-express"),
-    options: { parseBody: false }, // so we can use body-parser
+    options: { parseBody: false },
 };
 let seneca = require("seneca")()
     .use(SenecaWeb, senecaWebConfig)
