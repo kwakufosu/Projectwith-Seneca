@@ -2,11 +2,8 @@ import { Note } from "../model/notesModel";
 
 require("../db/db");
 
-const seneca = require("seneca")();
-
 let notesPlugin = function (this: any, options: any) {
-  let seneca = this;
-  seneca.add(
+  this.add(
     { area: "note", action: "fetch" },
     async (
       args: any,
@@ -21,7 +18,7 @@ let notesPlugin = function (this: any, options: any) {
     }
   );
 
-  seneca.add(
+  this.add(
     { area: "note", action: "create" },
     async (
       args: any,
@@ -36,43 +33,6 @@ let notesPlugin = function (this: any, options: any) {
       }
     }
   );
-
-  this.add("init:notesPlugin", function (msg: any, respond: any) {
-    seneca.act(
-      "role:web",
-      {
-        routes: {
-          prefix: "/note",
-          pin: "area:note, action:*",
-          map: {
-            fetch: { GET: true },
-            create: { GET: false, POST: true },
-          },
-        },
-      },
-      respond
-    );
-  });
 };
 
 export { notesPlugin };
-
-/*
-====This code was just to test the microservice before structuring as a plugin======
-seneca.act(
-  { area: "note", action: "create", note: { note: "I am the one" } },
-  function (err, result) {
-    if (err) {
-      return console.error(err);
-    }
-    console.log(result);
-  }
-);
-
-seneca.act({ area: "note", action: "fetch" }, function (err, result) {
-  if (err) {
-    return console.error(err);
-  }
-  console.log(result);
-});
-*/

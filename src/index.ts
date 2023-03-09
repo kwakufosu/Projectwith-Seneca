@@ -2,7 +2,7 @@ import express from "express";
 const SenecaWeb = require("seneca-web");
 
 import { notesPlugin } from "./services/notes/controller/notesController";
-import { api } from "./service_integration";
+import { api } from "./services-API";
 import { emailPlugin } from "./services/email/email";
 
 const app = express();
@@ -19,9 +19,8 @@ let senecaWebConfig = {
 
 let seneca = require("seneca")()
   .use(SenecaWeb, senecaWebConfig)
-  .use(notesPlugin)
-
-  .use(api);
+  .use(api)
+  .client({ port: 4000, pin: "area: note" });
 
 app.listen(PORT, () => {
   console.log("server up on " + PORT);
