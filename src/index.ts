@@ -18,7 +18,8 @@ let senecaWebConfig = {
 let seneca = require("seneca")()
   .use(SenecaWeb, senecaWebConfig)
   .use(api)
-  .client({ port: 4000, pin: "area: note" });
+  .client({ port: 4000, pin: "area: note" })
+  .client({ port: 5000, pin: "area:email" });
 
 app.listen(PORT, () => {
   console.log("server up on " + PORT);
