@@ -1,19 +1,16 @@
-import seneca from "seneca";
 import path from "path";
 import * as dotenv from "dotenv";
 dotenv.config({ path: path.join(__dirname + "../../../../.env") });
 import sgMail from "@sendgrid/mail";
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!);
-const sen = seneca();
 
 interface argsTemplate {
   message: string;
 }
 
-let emailPlugin  = function (this: any, options: any) {
-  let sen = this;
-  sen.add(
+let emailPlugin = function (this: any, options: any) {
+  this.add(
     { area: "email", action: "send_email" },
     function (
       args: argsTemplate,
@@ -27,7 +24,7 @@ let emailPlugin  = function (this: any, options: any) {
         from: "test@gmail.com",
         subject: "Sending with Twilio SendGrid is Fun",
         text: "and easy to do anywhere, even with Node.js", //will be dynamic
-        html: 'Note recorded', //will be dynamic
+        html: "Note recorded", //will be dynamic
       };
 
       sgMail
@@ -41,16 +38,16 @@ let emailPlugin  = function (this: any, options: any) {
     }
   );
 
-  this.add("init:emailPlugin ", function(msg:any, respond: any){
-    sen.act('role:web',{ routes: {
-    prefix: '/email',
-    pin: {area:'email',action:'*'},
-    map: {
-      fetch: {GET:true},
-      edit: {GET:false,POST:true},
-    }
-    }}, respond)
-    });
+  // this.add("init:emailPlugin ", function(msg:any, respond: any){
+  //   sen.act('role:web',{ routes: {
+  //   prefix: '/email',
+  //   pin: {area:'email',action:'*'},
+  //   map: {
+  //     fetch: {GET:true},
+  //     edit: {GET:false,POST:true},
+  //   }
+  //   }}, respond)
+  //   });
 };
 
 /*
@@ -80,4 +77,4 @@ sen.act(
 );
 */
 
-export {emailPlugin }
+export { emailPlugin };

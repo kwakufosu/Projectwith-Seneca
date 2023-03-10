@@ -1,9 +1,7 @@
 import express from "express";
 const SenecaWeb = require("seneca-web");
 
-import { notesPlugin } from "./services/notes/controller/notesController";
 import { api } from "./services-API";
-import { emailPlugin } from "./services/email/email";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
