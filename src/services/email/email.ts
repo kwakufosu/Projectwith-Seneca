@@ -21,7 +21,7 @@ let emailPlugin = function (this: any, options: any) {
     ) {
       const msg = {
         to: "kbfosu@st.ug.edu.gh", //will be dynamic
-        from: "test@gmail.com",
+        from: "kwakuboachiefosu@gmail.com",
         subject: "Sending with Twilio SendGrid is Fun",
         text: "and easy to do anywhere, even with Node.js", //will be dynamic
         html: "Note recorded", //will be dynamic
