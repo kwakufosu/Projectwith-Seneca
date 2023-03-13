@@ -17,7 +17,11 @@ export function api(this: any, options: any) {
         seneca.act(
           "area: email, action:send_email",
           function (err: any, email: any) {
-            respond(err, { note, email });
+            if (note && email) {
+              console.log(email);
+              respond(err, { note, email });
+            }
+            
           }
         );
       }
