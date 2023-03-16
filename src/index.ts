@@ -1,6 +1,5 @@
 import express from "express";
-const SenecaWeb = require("seneca-web");
-
+import SENECA = require("seneca");
 import { api } from "./services-API";
 
 const app = express();
@@ -15,8 +14,8 @@ let senecaWebConfig = {
   options: { parseBody: false },
 };
 
-let seneca = require("seneca")()
-  .use(SenecaWeb, senecaWebConfig)
+let seneca: SENECA.Instance = require("seneca")()
+  .use(require("seneca-web"), senecaWebConfig)
   .use(api)
   .client({ port: 4000, pin: "area: note" })
   .client({ port: 5000, pin: "area:email" });

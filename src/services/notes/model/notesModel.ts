@@ -1,9 +1,6 @@
 import { Schema, model,Types } from "mongoose";
+import {INote} from "../interface/interface"
 
-interface INote {
-  _id: Types.ObjectId,
-  note: String;
-}
 
 const noteSchema = new Schema<INote>({
   note: {
