@@ -1,3 +1,3 @@
-import { notesPlugin } from "./controller/notesController";
+import { notesPlugin } from "@notes/controller/notesController";
 
-require("seneca").use(notesPlugin).listen({ port: 4000, pin:"area: note"});
+require("seneca").use(notesPlugin).listen({ port: 4000, pin: "area: note" });
