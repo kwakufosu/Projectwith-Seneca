@@ -1,6 +1,6 @@
 import SENECA = require("seneca");
 let seneca: SENECA.Instance = SENECA();
-import { INote } from "@notes/interface/interface";
+import { INote } from "../../notes/src/interface/interface";
 
 export function api(this: SENECA.Instance, _: any) {
   let seneca = this;
