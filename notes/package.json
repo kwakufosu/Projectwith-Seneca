@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3",
+    "seneca": "^3.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "@types/seneca": "^2.1.11"
+  },
+  "name": "notes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx ts-node src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

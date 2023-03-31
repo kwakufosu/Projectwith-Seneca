@@ -1,6 +1,6 @@
-import { Note } from "@notes/model/notesModel";
+import { Note } from "../model/notesModel";
 import SENECA = require("seneca");
-require("@notes/db/db");
+require("../db/db");
 
 let notesPlugin = function (this: SENECA.Instance, _: any) {
   this.add(
