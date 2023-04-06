@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  email:
+    build: ./email
+    container_name: email_container
+
+    env_file:
+      - ./email/.env
+
+  notes:
+    build: ./notes
+    container_name: notes_container
+
+    env_file:
+      - ./notes/.env
+
+  integration:
+    build: ./integration
+
+    container_name: integration_container
+
+    ports:
+      - "3000:3000"
+    depends_on:
+      - email
+      - notes

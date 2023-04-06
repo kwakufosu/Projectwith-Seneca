@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "npx ts-node src/index.ts "
-    
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
+    "mongoose": "^7.0.3",
     "nodemon": "^2.0.20",
     "seneca": "^3.30.0",
     "seneca-web": "^2.2.2",

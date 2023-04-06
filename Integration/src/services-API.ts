@@ -1,6 +1,7 @@
+import {Types} from 'mongoose'
 import SENECA = require("seneca");
 let seneca: SENECA.Instance = SENECA();
-import { INote } from "../../notes/src/interface/interface";
+
 
 export function api(this: SENECA.Instance, _: any) {
   let seneca = this;
@@ -12,7 +13,10 @@ export function api(this: SENECA.Instance, _: any) {
   this.add("area:api,action: create", function (msg, respond) {
     let args = msg;
 
-    seneca.act("area: note, action: create", args, function (err, note: INote) {
+    seneca.act("area: note, action: create", args, function (err, note:  {
+      _id: Types.ObjectId,
+      note: String;
+    }) {
       seneca.act("area: email, action:send_email", function (err, email) {
         if (note && email) {
           console.log(email);
