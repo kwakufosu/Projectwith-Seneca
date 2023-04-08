@@ -6,6 +6,8 @@ The goal of this project is to show how a microservices app can be constructed w
 
 
 ## Design
+![Untitled Diagram drawio](https://user-images.githubusercontent.com/79140311/230745746-c14cdcd7-85a4-45ec-87cd-a411cff73221.png)
+
 ## Installation
 To install this project, simply clone it and run the command below:
 'npm install'
